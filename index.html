@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优贝口腔</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css"> 
+    <link rel="icon" href="./image/logo.ico">
+    <script src="https://unpkg.com/swiper/js/swiper.js"> </script>  
+
+    <script src="jquery-3.5.1.min.js"></script>
+   <style>
+       html {
+           width: 100%;
+           height: 1000px;
+           background-color:palegreen;
+       }
+       * {
+           margin: 0;
+           padding: 0;
+       }
+       .w {
+           width: 17.7083rem;
+           background-color: pink;
+           margin: 0 auto;
+    
+       }
+
+       /* 导航列表 */
+       .nav {
+         display: flex;
+     
+         width: 17.7083rem;
+         height: 0.8438rem;
+         box-sizing: border-box;
+         overflow-y: hidden;
+          overflow-x: scroll;
+         
+       }
+       .nav::-webkit-scrollbar{
+            display:none;
+        }
+
+       
+        .nav li {
+           list-style: none;
+           flex: 1;
+           float: left;
+           border-right: 2px solid #fff;
+           box-sizing: border-box;
+
+       }
+       .nav li a {
+             /* overflow: hidden; */
+           white-space: nowrap;
+           text-overflow: ellipsis;  
+           font-size: 0.3229rem;
+           text-decoration: none;
+           display: block;
+           width: 100%;
+           height: 0.8438rem;
+           line-height: 0.8438rem;
+           color: #fff;
+           background-color: #8219d8;
+           text-align: center;
+    
+       }
+
+       .nav li a:hover {
+         background-color: #28649d;
+       }
+
+
+
+       .slidNav {
+            position: absolute;
+           display: none;
+           width: 2.5rem;
+           height: 4.2083rem;
+           background-color: #fff;
+           padding-top: 0.3646rem;
+           z-index: 9999;
+
+       }
+
+   
+       .isShow {
+         box-sizing: border-box;
+         width: 1.5rem;
+         height: 3.8rem;
+         margin:  0 auto;
+         border-left: 1px solid #8219d8;
+         padding-top: 0.2167rem
+         
+       }
+       .isShow li {
+           list-style: none;
+           width: 1.5rem;
+           height: 0.525rem;
+       }
+       .isShow li a {
+            margin: 0 auto;
+           font-size: 0.2292rem;
+           text-decoration: none;
+           color: #000;
+           line-height:  0.525rem;
+           display: block;
+           text-align: center;
+           border-bottom: 1px solid #8219d8;
+           position: relative;
+       }
+       .isShow li .box {
+           position: absolute;
+           top: 0rem;
+           left: 2.5rem;
+           display: none;
+           width: 12.7rem;
+           height: 4.566rem;
+           background-color: #fff;
+           z-index:9999;
+
+       }
+       .isShow li  .box h1 {
+           font-size: 0.3125rem
+       }
+
+
+
+       /* swiper 轮播 */
+        html, body {
+        position: relative;
+        height: 100%;
+        }
+        body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+        }
+        .swiper-container {
+        width: 100%;
+        height: 100%;
+
+        }
+        .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        }
+
+        /* 口腔项目列表 */
+        .list {
+            width:100%;
+            height: 0.5208rem;
+        }
+        .list ul li {
+            list-style: none;
+            float: left;
+            margin-right: 0.5208rem;
+            height: 0.5208rem;
+            line-height:0.5208rem; 
+        }
+        .list ul li:last-child{
+            float: right;
+        }
+        .list ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 0.125rem;
+        }
+        .list ul li a:hover{
+            color: royalblue;
+        }
+        .list ul li input {
+            width: 3.125rem;
+            height:0.4167rem;
+            border-color: #ccc;
+            outline: none;
+            border:0px;
+            text-align:center;
+            vertical-align:middle ;
+        }
+        .list ul li button {
+            display: inline-block;
+            width: 1.0417rem;
+            height: 0.4167rem;
+            background-color: royalblue;
+            border:0px;
+            color: #fff;
+            outline: none;
+            text-align:center;
+            vertical-align:middle ;
+
+        }
+
+
+        /* 牙齿种植 图标 */
+        .listIcon ul {
+          width: 100%;
+          display: flex;
+          height: 1.6667rem;
+          background-color:#fff;
+        }
+        .listIcon ul li{
+           width: 100%;
+           height: 1.6667rem;
+          flex: 1;
+          list-style: none;
+          margin-right: 0.2083rem;
+        }
+    
+          .listIcon ul li:last-child{
+          margin-right: 0 !important;
+          }
+
+          /* .listIcon ul li a:hover{
+            background-color: #0093cc;
+          } */
+
+
+        .listIcon ul li a {
+          text-decoration: none;
+          display: block;
+          width: 100%;
+          height: 1.6667rem;
+          line-height: 1.6667rem;
+          text-align: center;
+          background-color: pink;
+        }
+
+      .iconBox {
+          width: 100%;
+          height: 0.5208rem;
+          background-color:#0093cc;
+        }
+
+        .iconBox ul li {
+          float: left;
+         
+          margin:  0  0.5208rem;
+          list-style: none;
+
+        }
+
+        .iconBox ul li a {
+           width: 100%;
+           height: 0.5208rem;
+           line-height: 0.5208rem;
+          text-decoration: none;
+          font-size: 0.1667rem;
+          color: #fff;
+        }
+
+        .iconBox {
+          display: none;
+        }
+
+
+</style>
+
+</head>
+<body>
+
+        <!-- 导航栏 -->
+        <div class="w">
+            <!-- 导航列表 -->
+            <ul class="nav">
+            
+                <li class="Home"><a href="javascript:;">首页</a></li>
+                <li><a href="javascript:;">主治项目</a></li>
+                <li><a href="javascript:;">医疗团队</a></li>
+                <li><a href="javascript:;">关于我们</a></li>
+                <li><a href="javascript:;">先进设备</a></li>
+                <li><a href="javascript:;">门诊资质</a></li>
+                <li><a href="javascript:;">口腔课堂</a></li>
+
+            </ul>
+
+            <!-- 下拉列表 -->
+            <div class="slidNav">
+                <ul class="isShow"> 
+                    <li>
+                        <a href="javascript:;">列表1</a>
+                        <div class="box"><h1>1</h1></div>
+
+                    </li>
+                    <li>
+                        <a href="javascript:;">列表2</a>
+                        <div class="box"><h1>2</h1></div>
+                    </li>
+                    <li>
+                        <a href="javascript:;">列表3</a>
+                        <div class="box"><h1>3</h1></div>
+                    </li>
+                    <li>
+                        <a href="javascript:;">列表4</a>
+                        <div class="box"><h1>4</h1></div>
+                    </li>
+                    <li>
+                        <a href="javascript:;">列表5</a>
+                        <div class="box"><h1>5</h1></div>
+                    </li>
+                    <li>
+                        <a href="javascript:;">列表6</a>
+                        <div class="box"><h1>6</h1></div>
+                    </li> 
+                </ul> 
+            </div>
+        </div>
+
+        <!-- swiper 轮播  -->
+        <div class="swiper">
+                 <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                <div class="swiper-slide"><img style="width: 100%;height: 100%;" src="./image/PC端_02.jpg" alt=""></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+
+        <!-- 口腔项目列表 -->
+        <div class="w">
+            <div class="list">
+                <ul>
+                    <li><a href="javascript:;">牙齿种植</a></li>
+                    <li><a href="javascript:;">牙齿矫正</a></li>
+                    <li><a href="javascript:;">牙齿美容</a></li>
+                    <li><a href="javascript:;">牙齿美白</a></li>
+                    <li><a href="javascript:;">牙齿治疗</a></li>
+                    <li><a href="javascript:;">儿童牙齿</a></li>
+                    <li>
+                        <input type="text" name="" id=""><button>搜索</button>
+                    </li>
+                  
+                </ul>
+            </div>
+        </div>
+
+        <!-- 牙齿种植 图标 -->
+        <div class="w">
+            <div class="listIcon">
+              <ul>
+                <li><a href="javascript:;">1</a></li>
+                <li><a href="javascript:;">2</a></li>
+                <li><a href="javascript:;">3</a></li>
+                <li><a href="javascript:;">4</a></li>
+                <li><a href="javascript:;">5</a></li>
+                <li><a href="javascript:;">6</a></li>
+              </ul>
+            </div>
+
+          <div class="iconBox" >
+
+                <div class="tab" >
+                    <ul>
+                      <li><a href="javascript:;">单颗牙种植</a></li>
+                      <li><a href="javascript:;">多颗牙种植</a></li>
+                      <li><a href="javascript:;">全口种植</a></li>
+                      <li><a href="javascript:;">种植体</a></li>
+                      <li><a href="javascript:;">活动义齿</a></li>
+                      <li><a href="javascript:;">固定义齿</a></li>
+                    </ul>
+                </div>
+
+                <div class="tab">
+                  <ul>
+                    <li><a href="javascript:;">1</a></li>
+                    <li><a href="javascript:;">多颗牙种植</a></li>
+                    <li><a href="javascript:;">全口种植</a></li>
+                    <li><a href="javascript:;">种植体</a></li>
+                    <li><a href="javascript:;">活动义齿</a></li>
+                    <li><a href="javascript:;">固定义齿</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab">
+                  <ul>
+                    <li><a href="javascript:;">2</a></li>
+                    <li><a href="javascript:;">多颗牙种植</a></li>
+                    <li><a href="javascript:;">全口种植</a></li>
+                    <li><a href="javascript:;">种植体</a></li>
+                    <li><a href="javascript:;">活动义齿</a></li>
+                    <li><a href="javascript:;">固定义齿</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab">
+                  <ul>
+                    <li><a href="javascript:;">3</a></li>
+                    <li><a href="javascript:;">多颗牙种植</a></li>
+                    <li><a href="javascript:;">全口种植</a></li>
+                    <li><a href="javascript:;">种植体</a></li>
+                    <li><a href="javascript:;">活动义齿</a></li>
+                    <li><a href="javascript:;">固定义齿</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab">
+                  <ul>
+                    <li><a href="javascript:;">4</a></li>
+                    <li><a href="javascript:;">多颗牙种植</a></li>
+                    <li><a href="javascript:;">全口种植</a></li>
+                    <li><a href="javascript:;">种植体</a></li>
+                    <li><a href="javascript:;">活动义齿</a></li>
+                    <li><a href="javascript:;">固定义齿</a></li>
+                  </ul>
+                </div>
+
+                <div class="tab">
+                  <ul>
+                    <li><a href="javascript:;">5</a></li>
+                    <li><a href="javascript:;">多颗牙种植</a></li>
+                    <li><a href="javascript:;">全口种植</a></li>
+                    <li><a href="javascript:;">种植体</a></li>
+                    <li><a href="javascript:;">活动义齿</a></li>
+                    <li><a href="javascript:;">固定义齿</a></li>
+                  </ul>
+                </div>
+
+          </div>
+
+        </div>
+
+
+
+    
+
+
+
+
+
+
+
+
+  
+
+
+    <script>
+        (function(){
+            function getWidth(){
+          var html = document.querySelector('html')
+          var width = html.clientWidth
+          var fontSize = width / 20 + 'px'
+          // console.log(width);
+          
+          html.style.fontSize = fontSize
+
+            }
+              getWidth()
+          window.onresize = function(){
+              getWidth()
+          }
+          })()
+
+          $('.Home').mouseover(function(){
+            
+              $('.slidNav').stop().slideDown(700)
+          
+          })
+
+      
+          $('.slidNav').hover(function(){
+            $('.isShow>li').mouseover(function(){
+                $(this).css('background','#ccc').siblings().css('background','')
+                $(this).find('div').fadeIn(500).parent('li').siblings().find('div').hide() 
+            })
+        
+          },function(){
+              $('.slidNav').stop().slideUp()
+              
+          })
+
+          $('.isShow>li').click(function(){
+              $('.slidNav').stop().slideUp(700)
+              $('.box').stop().slideUp(700)
+          })
+      
+
+    //  swiper 轮播
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      loop: true,    // 无限轮播
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+
+  
+    // 牙齿种植 图标
+    $('.listIcon>ul>li>a').mouseover(function(){
+          $(this).css('background','#0093cc').parent().siblings().find('a').css('background','')
+    })
+
+    $('.listIcon>ul>li').hover(function(){
+    
+      $('.iconBox').css('display','block')
+      var index =  $(this).index()
+      $('.iconBox div').eq(index).show().siblings().hide()
+    },function(){
+      //  $('.iconBox').css('display','none')
+    })
+        
+    $('.iconBox').hover(function(){
+    
+    },function(){
+      $(".iconBox").css('display','none')
+    })
+
+
+
+
+
+
+    </script>
+</body>
+</html>
